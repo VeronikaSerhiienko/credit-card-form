@@ -1,0 +1,264 @@
+* {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.error-message {
+  color: red;
+}
+.error .inputs,
+.error .selects {
+  border: 1px solid red;
+  border-radius: 6px;
+} 
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 360px;
+  border-radius: 6px;
+  box-shadow: 1px 2px 3px 0 rgba(0,0,0,.10);
+  background-color: #f7f7f7;
+  padding: 45px;
+  color: #666666;
+}
+
+.form-header {
+  border-bottom: 1px solid #0ff;
+}
+.title {
+  font-size: 22px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.form-item {
+  margin-top: 30px;
+}
+
+.inputs {
+  width: 100%;
+  border: 1px solid #0ff;
+  border-radius: 6px;
+  margin-top: 10px;
+  padding: 0 10px;
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.cvv-field {
+  float: left;
+  width: 40%;
+}
+
+.cvv-field-and-store-the-card {
+  margin-top: 20px;
+}
+ 
+.checkbox-field {
+  float: right;
+  margin-top: 40px;
+}
+
+.month-array,
+.year-array {
+  width: 40%;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid #0ff;
+  border-radius: 6px;
+  margin-top: 10px;
+  font-size: 18px;
+  line-height: 30px;
+  color: #666666;
+  background: url('../images/caret.png') no-repeat;
+  background-position: 85% 50%;
+  background-color: #fff;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+ 
+.month-array {
+  float: left;
+}
+ 
+.year-array {
+  float: right;
+}
+
+.expiration-date-title,
+.label-of-credit-card-number,
+.label-of-user-email {
+  text-transform: capitalize;
+  font-size: 18px;
+}
+
+.expiration-date {
+  margin-top: 20px;
+}
+
+.label-of-cvv-code {
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+.store-the-card {
+  visibility: hidden;
+}
+
+.label-of-store-the-card {
+  position: relative;
+  padding-left: 5px;
+  
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: -20px;
+    top: 0;
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+    border-radius: 2px;
+    border: 1px solid #0ff;    
+  }
+}
+
+.store-the-card:checked + .label-of-store-the-card:before {
+  content: "";
+  background-image: url('../images/check.png');
+
+}
+
+.email-field {
+  height: 0;
+  display: none;
+  animation: open 200ms linear 1 forwards;
+}
+
+.email-field-open {
+  margin-top: 20px;
+  display: block;
+}
+
+@keyframes open {
+  to {
+    height: 65px;
+  }
+}
+
+.submit-button {
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 34px;
+  width: 100%;
+  background-color: rgba(0,255,255,0.5);
+  border-radius: 6px;
+  border: 0;
+  color: #202020;
+  background-color: rgba(0,255,255,0.5);
+  background-image: linear-gradient(#666, #666);
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  transition: background-size 0.5s;
+
+  &:hover {
+    background-size: 100% 100%;
+    color: #00e5e5;
+  };
+
+  &:focus {
+    outline: none;
+    background-color: #666;
+    color: #00e5e5;
+  };
+}
+
+.submit-field {
+  margin-top: 40px;
+}
+
+.loader-wrapper {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,0.5);
+}
+
+.loader {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #fff;
+  border-radius: 50%;
+  border-top: 16px solid #0ff;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+.success-message {
+  display: none;
+  text-align: center;
+}
+
+.visible {
+  display: block;
+}
